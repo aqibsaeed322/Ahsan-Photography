@@ -10,7 +10,7 @@ export const photographerInfo = {
     "Over the past decade, Ahsan has documented more than 450 luxury weddings across Lahore, Islamabad, Karachi, Dubai, and the UK. His mastery extends to spiritual Sufi Qawwali nights, sacred Mehfil-e-Naat recitations, and electrifying live arena concerts.",
     "Trained under international master cinematographers, Ahsan approaches every event not merely with a camera, but with a deep reverence for Pakistani cultural heritage, authentic emotional nuance, and timeless visual storytelling."
   ],
-  portraitImage: "/assets/images/photographer.jpg",
+  portraitImage: "/assets/images/about.jpg",
   logoImage: "/assets/images/logo.jpeg",
   experienceYears: 11,
   stats: [
