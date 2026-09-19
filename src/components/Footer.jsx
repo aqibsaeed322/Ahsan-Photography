@@ -76,11 +76,6 @@ export default function Footer({ onOpenBooking }) {
                 </a>
               </li>
               <li>
-                <a href="#live-media" className="hover:text-amber-300 transition-colors">
-                  Live Media Coverage & Cultural Galas
-                </a>
-              </li>
-              <li>
                 <a href="#about" className="hover:text-amber-300 transition-colors">
                   About Ahsan & Gear Vault
                 </a>

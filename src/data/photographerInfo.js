@@ -15,14 +15,14 @@ export const photographerInfo = {
   stats: [
     { label: "Luxury Weddings", value: "450+", subtitle: "Royal Ceremonies" },
     { label: "Qawwali & Naat Mehfils", value: "135+", subtitle: "Spiritual Gatherings" },
-    { label: "Live Concerts & Media", value: "80+", subtitle: "Arena & Galas" },
+    { label: "Live Arena Concerts", value: "80+", subtitle: "Stage Performances" },
     { label: "Awards & Honors", value: "18+", subtitle: "National Accolades" }
   ],
   contact: {
-    phone: "+92 300 8472910",
-    phoneDisplay: "+92 (300) 847-2910",
-    whatsapp: "923008472910",
-    email: "ahsan.visuals@gmail.com",
+    phone: "+92 302 3818474",
+    phoneDisplay: "+92 (302) 381-8474",
+    whatsapp: "923023818474",
+    email: "ahsanphotographer577@gmail.com",
     studioAddress: "Suite 402, Signature Plaza, Main Boulevard, Gulberg III, Lahore, Pakistan",
     operatingHours: "Mon – Sat: 11:00 AM – 9:00 PM (Appointments Preferred)",
     serviceCities: [

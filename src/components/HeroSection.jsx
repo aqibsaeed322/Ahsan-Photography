@@ -99,7 +99,7 @@ export default function HeroSection({ onOpenBooking, heroItems = [] }) {
 
             {/* Description */}
             <p className="text-slate-700 text-sm sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Official portfolio of <strong className="text-slate-950 font-bold">{photographerInfo.name}</strong> — Master Pakistani photographer documenting Royal Weddings, Soulful Qawwali Mehfils, Naat Gatherings, and Live Media Coverage across Pakistan & Worldwide.
+              Official portfolio of <strong className="text-slate-950 font-bold">{photographerInfo.name}</strong> — Master Pakistani photographer documenting Royal Weddings, Soulful Qawwali Mehfils, and Sacred Naat Gatherings across Pakistan & Worldwide.
             </p>
 
             {/* Action Buttons */}

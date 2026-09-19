@@ -180,7 +180,6 @@ I would like to check availability and book coverage:
                   <option value="Sufi Qawwali Night">Sufi Qawwali Night</option>
                   <option value="Mehfil-e-Naat Gathering">Mehfil-e-Naat Gathering</option>
                   <option value="Live Music Concert">Live Music Concert</option>
-                  <option value="Red Carpet & Corporate Media">Red Carpet & Corporate Media</option>
                   <option value="Heritage Couple Portrait Shoot">Heritage Couple Portrait Shoot</option>
                 </select>
               </div>

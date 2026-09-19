@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
 import { galleryItems } from '../data/galleryData';
 import { Eye, MapPin, Layers } from 'lucide-react';
+import CardImageCarousel from './CardImageCarousel';
 
 export default function PortfolioGallery({ onSelectPhoto }) {
   const [activeFilter, setActiveFilter] = useState('all');
 
+  // Master portfolio focusing on royal wedding & fine-art showcases (excluding duplicates from dedicated Qawwali section and removed Live Media)
+  const masterWeddingItems = galleryItems.filter((item) => item.category === 'wedding');
+
   const filterCategories = [
     { id: 'all', name: 'Master Showcase (All)' },
-    { id: 'wedding', name: 'Weddings (Mehndi, Baraat, Walima)' },
-    { id: 'spiritual_concert', name: 'Qawwali, Naat & Concerts' },
-    { id: 'media', name: 'Live Media & Galas' },
+    { id: 'Baraat', name: 'Royal Baraat' },
+    { id: 'Nikkah', name: 'Nikkah Ceremony' },
+    { id: 'Mehndi', name: 'Mehndi & Mayun' },
+    { id: 'Walima', name: 'Walima Receptions' },
+    { id: 'Portraits', name: 'Bridal & Couple Portraits' },
   ];
 
   const filteredPhotos = activeFilter === 'all'
-    ? galleryItems
-    : galleryItems.filter((item) => item.category === activeFilter);
+    ? masterWeddingItems
+    : masterWeddingItems.filter((item) => item.subCategory?.toLowerCase() === activeFilter.toLowerCase());
 
   return (
     <section id="portfolio" className="py-24 relative bg-white overflow-hidden border-t border-slate-200/80">
@@ -40,7 +46,7 @@ export default function PortfolioGallery({ onSelectPhoto }) {
           </h2>
 
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            A comprehensive visual anthology capturing royal Pakistani weddings, spiritual Sufi kalams, revered Naat recitations, and major cultural spectacles.
+            A comprehensive visual anthology capturing royal Pakistani weddings, fine-art bridal couture, and timeless romantic moments.
           </p>
 
           {/* Interactive Category Filter Pills */}
@@ -68,26 +74,34 @@ export default function PortfolioGallery({ onSelectPhoto }) {
             <div
               key={item.id}
               onClick={() => onSelectPhoto(item)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectPhoto(item);
+                }
+              }}
               className="break-inside-avoid group relative bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-amber-400 transition-all duration-500 hover:-translate-y-2 shadow-md hover:shadow-2xl hover:shadow-amber-500/10 cursor-pointer"
             >
-              {/* Photo */}
+              {/* Photo Carousel */}
               <div className="relative overflow-hidden bg-slate-100">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  className="w-full object-cover group-hover:scale-108 transition-transform duration-700"
+                <CardImageCarousel
+                  images={item.images && item.images.length > 0 ? item.images : [item.image]}
+                  title={item.title}
+                  aspect={item.aspect === 'portrait' ? 'aspect-[4/5]' : 'aspect-[4/3]'}
+                  staggerIndex={filteredPhotos.indexOf(item)}
+                  onCardClick={() => onSelectPhoto(item)}
+                  badge={
+                    <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-white/90 backdrop-blur-md text-slate-900 border border-slate-200 shadow-md">
+                      {item.subCategory}
+                    </span>
+                  }
+                  showHoverOverlay={false}
                 />
 
-                {/* Subcategory Tag */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-white/90 backdrop-blur-md text-slate-900 border border-slate-200 shadow-md">
-                    {item.subCategory}
-                  </span>
-                </div>
-
                 {/* Full Overlay On Hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between z-20">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col justify-between z-20 pointer-events-none">
                   
                   <div className="flex justify-end">
                     <span className="p-2.5 rounded-full bg-amber-500 text-white shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
@@ -122,12 +136,26 @@ export default function PortfolioGallery({ onSelectPhoto }) {
               </div>
 
               {/* Bottom Card Bar (Visible always on mobile, discreet on desktop) */}
-              <div className="p-4 sm:hidden bg-white border-t border-slate-100 space-y-1">
-                <h4 className="font-royal text-sm font-bold text-slate-950">{item.title}</h4>
-                <div className="flex items-center justify-between text-[11px] text-slate-600">
-                  <span>{item.location}</span>
-                  <span className="text-amber-700 font-bold">{item.subCategory}</span>
+              <div className="p-4 sm:hidden bg-white border-t border-slate-100 flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <h4 className="font-royal text-sm font-bold text-slate-950">{item.title}</h4>
+                  <div className="flex items-center gap-2 text-[11px] text-slate-600">
+                    <span>{item.location}</span>
+                    <span className="text-amber-700 font-bold">• {item.subCategory}</span>
+                  </div>
                 </div>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectPhoto(item);
+                  }}
+                  className="px-3.5 py-1.5 rounded-full bg-slate-900 text-amber-400 text-xs font-bold flex items-center gap-1 shadow-sm"
+                  aria-label={`View ${item.title}`}
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>View</span>
+                </button>
               </div>
 
             </div>

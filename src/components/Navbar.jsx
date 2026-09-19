@@ -23,7 +23,6 @@ export default function Navbar({ isPlayingAudio, toggleAudio }) {
     { name: 'Home', href: '#home' },
     { name: 'Concert & Qawwali', href: '#spiritual-concerts' },
     { name: 'Wedding Photography', href: '#weddings' },
-    { name: 'Live Media', href: '#live-media' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'About Him', href: '#about' },
     { name: 'Contact', href: '#contact' },

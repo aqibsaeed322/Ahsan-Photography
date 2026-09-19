@@ -1,8 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, MapPin, Camera, Sparkles, MessageCircle, Calendar, ShieldCheck } from 'lucide-react';
 import { photographerInfo } from '../data/photographerInfo';
 
 export default function LightboxModal({ item, onClose, onPrev, onNext }) {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  const images = Array.isArray(item?.images) && item.images.length > 0 ? item.images : (item?.image ? [item.image] : []);
+
+  useEffect(() => {
+    setActiveImageIndex(0);
+  }, [item?.id]);
+
   useEffect(() => {
     if (!item) return;
 
@@ -23,33 +31,46 @@ export default function LightboxModal({ item, onClose, onPrev, onNext }) {
 
   if (!item) return null;
 
+  const currentImageSrc = images[activeImageIndex] || item.image;
   const whatsappInquiryUrl = `https://wa.me/${photographerInfo.contact.whatsapp}?text=Hi%20Ahsan!%20I%20am%20interested%20in%20a%20similar%20photography%20style%20as%20"${encodeURIComponent(item.title)}"%20for%20my%20event.`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-xl p-3 sm:p-6 animate-in fade-in duration-200">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-xl p-2 sm:p-6 animate-in fade-in duration-200 overflow-y-auto"
+      onClick={onClose}
+    >
       
       {/* Close Button */}
       <button
-        onClick={onClose}
-        className="absolute top-4 right-4 z-50 p-3 rounded-full bg-slate-900/80 border border-amber-500/30 text-slate-200 hover:text-amber-400 hover:scale-105 transition-all shadow-xl"
+        onClick={(e) => {
+          e.stopPropagation();
+          onClose();
+        }}
+        className="fixed top-3 right-3 sm:top-5 sm:right-5 z-50 p-2.5 sm:p-3 rounded-full bg-slate-900/90 border border-amber-500/40 text-slate-200 hover:text-amber-400 hover:scale-105 transition-all shadow-2xl"
         aria-label="Close modal"
       >
-        <X className="w-6 h-6" />
+        <X className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
-      {/* Navigation Left */}
+      {/* Navigation Left (Desktop) */}
       <button
-        onClick={onPrev}
-        className="absolute left-3 sm:left-6 z-40 p-3 rounded-full bg-slate-900/80 border border-slate-700 text-slate-200 hover:text-amber-400 hover:border-amber-500/40 hover:scale-110 transition-all shadow-2xl"
+        onClick={(e) => {
+          e.stopPropagation();
+          onPrev();
+        }}
+        className="hidden md:flex fixed left-4 lg:left-8 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-slate-900/80 border border-slate-700 text-slate-200 hover:text-amber-400 hover:border-amber-500/40 hover:scale-110 transition-all shadow-2xl items-center justify-center"
         aria-label="Previous photo"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
 
-      {/* Navigation Right */}
+      {/* Navigation Right (Desktop) */}
       <button
-        onClick={onNext}
-        className="absolute right-3 sm:right-6 z-40 p-3 rounded-full bg-slate-900/80 border border-slate-700 text-slate-200 hover:text-amber-400 hover:border-amber-500/40 hover:scale-110 transition-all shadow-2xl"
+        onClick={(e) => {
+          e.stopPropagation();
+          onNext();
+        }}
+        className="hidden md:flex fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-slate-900/80 border border-slate-700 text-slate-200 hover:text-amber-400 hover:border-amber-500/40 hover:scale-110 transition-all shadow-2xl items-center justify-center"
         aria-label="Next photo"
       >
         <ChevronRight className="w-6 h-6" />
@@ -57,27 +78,81 @@ export default function LightboxModal({ item, onClose, onPrev, onNext }) {
 
       {/* Modal Content Window */}
       <div 
-        className="max-w-6xl w-full max-h-[92vh] glass-panel rounded-2xl overflow-hidden flex flex-col lg:flex-row border border-amber-500/20 shadow-2xl shadow-black"
+        className="max-w-5xl w-full max-h-[95vh] sm:max-h-[92vh] glass-panel rounded-2xl sm:rounded-3xl overflow-y-auto lg:overflow-hidden flex flex-col lg:flex-row border border-amber-500/30 shadow-2xl shadow-black my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         
         {/* Main Image View */}
-        <div className="flex-1 bg-black/80 relative flex items-center justify-center overflow-hidden min-h-[350px] lg:min-h-[560px]">
+        <div className="flex-1 bg-black/90 relative flex items-center justify-center overflow-hidden min-h-[260px] sm:min-h-[380px] lg:min-h-[540px]">
           <img
-            src={item.image}
+            key={currentImageSrc}
+            src={currentImageSrc}
             alt={item.title}
-            className="w-full h-full max-h-[75vh] object-contain select-none"
+            className="w-full h-full max-h-[48vh] sm:max-h-[65vh] lg:max-h-[75vh] object-contain select-none transition-opacity duration-300"
           />
           
           {/* Subtle Watermark Branding */}
-          <div className="absolute bottom-4 left-4 pointer-events-none opacity-70 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-amber-500/20 text-xs">
+          <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 pointer-events-none opacity-70 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-lg border border-amber-500/20 text-xs">
             <Camera className="w-3.5 h-3.5 text-amber-400" />
             <span className="font-royal text-amber-200 tracking-wider">AHSAN VISUALS</span>
           </div>
+
+          {/* Mobile Prev / Next floating mini buttons over image on mobile */}
+          <div className="md:hidden absolute inset-x-2 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-none z-30">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onPrev();
+              }}
+              className="p-2 rounded-full bg-black/70 text-white border border-white/20 pointer-events-auto backdrop-blur-sm shadow-md"
+              aria-label="Previous"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onNext();
+              }}
+              className="p-2 rounded-full bg-black/70 text-white border border-white/20 pointer-events-auto backdrop-blur-sm shadow-md"
+              aria-label="Next"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Sub-image Gallery Thumbnails Strip (if event has multiple photos) */}
+          {images.length > 1 && (
+            <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-30 flex items-center gap-1.5 sm:gap-2 bg-black/80 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/20 shadow-xl max-w-[75%] overflow-x-auto">
+              <span className="text-[10px] font-mono text-amber-300 font-bold px-1 shrink-0">
+                {activeImageIndex + 1}/{images.length}
+              </span>
+              {images.map((img, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveImageIndex(idx);
+                  }}
+                  className={`w-7 h-7 sm:w-8 sm:h-8 shrink-0 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                    idx === activeImageIndex
+                      ? 'border-amber-400 scale-110 shadow-lg shadow-amber-400/30'
+                      : 'border-white/30 opacity-60 hover:opacity-100 hover:border-white'
+                  }`}
+                  aria-label={`View photo ${idx + 1}`}
+                >
+                  <img src={img} alt="" className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Sidebar Info & Metadata */}
-        <div className="w-full lg:w-96 p-6 sm:p-8 flex flex-col justify-between bg-[#0B0F19]/95 overflow-y-auto max-h-[40vh] lg:max-h-[92vh]">
+        <div className="w-full lg:w-96 p-5 sm:p-8 flex flex-col justify-between bg-[#0B0F19]/95 overflow-y-auto max-h-[48vh] lg:max-h-[92vh]">
           
           <div className="space-y-4">
             

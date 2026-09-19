@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ConcertQawwaliSection from './components/ConcertQawwaliSection';
 import WeddingSection from './components/WeddingSection';
-import LiveMediaSection from './components/LiveMediaSection';
 import PortfolioGallery from './components/PortfolioGallery';
 import AboutSection from './components/AboutSection';
 import TestimonialsSection from './components/TestimonialsSection';
@@ -80,10 +79,6 @@ export default function App() {
           onOpenBooking={() => setIsBookingOpen(true)}
         />
 
-        {/* 4. Live Media Coverage & Cultural Galas */}
-        <LiveMediaSection 
-          onSelectPhoto={handleSelectPhoto}
-        />
 
         {/* 5. Master Portfolio / His Work */}
         <PortfolioGallery 

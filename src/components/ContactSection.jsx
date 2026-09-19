@@ -69,7 +69,7 @@ New inquiry from website:
           </h2>
 
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Ready to immortalize your royal wedding, soulful Qawwali night, or live media event? Contact Ahsan directly via WhatsApp, Phone, or our studio portal.
+            Ready to immortalize your royal wedding, soulful Qawwali night, or live concert? Contact Ahsan directly via WhatsApp, Phone, or our studio portal.
           </p>
         </div>
 
@@ -288,7 +288,6 @@ New inquiry from website:
                   <option value="Sufi Qawwali Night">Sufi Qawwali Gathering</option>
                   <option value="Mehfil-e-Naat Recitation">Mehfil-e-Naat Gathering</option>
                   <option value="Live Music Concert & Stage">Live Music Concert & Stage</option>
-                  <option value="Red Carpet & Cultural Media">Red Carpet & Cultural Media</option>
                   <option value="Heritage Fine-Art Couple Shoot">Heritage Fine-Art Couple Shoot</option>
                 </select>
 

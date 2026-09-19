@@ -5,7 +5,13 @@ export const galleryItems = [
     title: "The Royal Mughal Baraat",
     category: "wedding",
     subCategory: "Baraat",
-    image: "/assets/images/wedding_baraat.jpg",
+    image: "/assets/images/baraat.jpeg",
+    images: [
+      "/assets/images/baraat.jpeg",
+      "/assets/images/baraat (2).jpeg",
+      "/assets/images/baraat (3).jpeg",
+      "/assets/images/wedding_baraat.jpg"
+    ],
     location: "Haveli Barood Khana, Old Lahore",
     date: "November 2024",
     client: "Ali & Zainab",
@@ -20,7 +26,13 @@ export const galleryItems = [
     title: "Jashn-e-Bahar Mehndi Night",
     category: "wedding",
     subCategory: "Mehndi",
-    image: "/assets/images/mehndi_event.jpg",
+    image: "/assets/images/mehndi.jpeg",
+    images: [
+      "/assets/images/mehndi.jpeg",
+      "/assets/images/mehndi (2).jpeg",
+      "/assets/images/mehndi (3).jpeg",
+      "/assets/images/mehndi_event.jpg"
+    ],
     location: "Royal Palm Golf & Country Club, Lahore",
     date: "December 2024",
     client: "Hamza & Meerub",
@@ -35,7 +47,12 @@ export const galleryItems = [
     title: "Crystal Ballroom Walima Glamour",
     category: "wedding",
     subCategory: "Walima",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85",
+    image: "/assets/images/walima.jpeg",
+    images: [
+      "/assets/images/walima.jpeg",
+      "/assets/images/walima (2).jpeg",
+      "/assets/images/walima (3).jpeg"
+    ],
     location: "Serena Hotel, Islamabad",
     date: "January 2025",
     client: "Shahid & Alizeh",
@@ -51,6 +68,12 @@ export const galleryItems = [
     category: "wedding",
     subCategory: "Portraits",
     image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
+    images: [
+      "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
+      "/assets/images/baraat (2).jpeg",
+      "/assets/images/walima (2).jpeg",
+      "/assets/images/nikkah (2).jpeg"
+    ],
     location: "Sheesh Mahal Courtyard, Lahore",
     date: "February 2025",
     client: "Bilal & Maham",
@@ -61,26 +84,16 @@ export const galleryItems = [
     description: "A timeless bridal portrait capturing the intricate gold matha patti and handwoven velvet dupatta in natural historical archway light."
   },
   {
-    id: "wed-05",
-    title: "Rasm-e-Heena & Sparklers Entrance",
-    category: "wedding",
-    subCategory: "Mehndi",
-    image: "https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?auto=format&fit=crop&w=1200&q=85",
-    location: "DHA Country Club, Karachi",
-    date: "October 2024",
-    client: "Danyal & Sania",
-    camera: "Sony A7R V",
-    lens: "24-70mm f/2.8 GM II",
-    featured: false,
-    aspect: "landscape",
-    description: "Spectacular sparkler procession as the bride and groom enter under a canopy of fresh marigolds and brass lamps."
-  },
-  {
     id: "wed-06",
     title: "Intimate Nikkah Ceremony at Faisal Mosque",
     category: "wedding",
-    subCategory: "Baraat",
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85",
+    subCategory: "Nikkah",
+    image: "/assets/images/nikkah.jpeg",
+    images: [
+      "/assets/images/nikkah.jpeg",
+      "/assets/images/nikkah (2).jpeg",
+      "/assets/images/nikkah (3).jpeg"
+    ],
     location: "Faisal Mosque Courtyard, Islamabad",
     date: "September 2024",
     client: "Omar & Fatima",

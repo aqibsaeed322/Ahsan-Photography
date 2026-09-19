@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { galleryItems } from '../data/galleryData';
 import { Heart, Sparkles, MapPin, Camera, Eye, Gem } from 'lucide-react';
 import BeforeAfterSlider from './BeforeAfterSlider';
+import CardImageCarousel from './CardImageCarousel';
 
 export default function WeddingSection({ onSelectPhoto, onOpenBooking }) {
   const [selectedCeremony, setSelectedCeremony] = useState('all');
@@ -14,8 +15,9 @@ export default function WeddingSection({ onSelectPhoto, onOpenBooking }) {
 
   const ceremonies = [
     { id: 'all', title: 'All Wedding Ceremonies', icon: Gem },
+    { id: 'Baraat', title: 'Royal Baraat', icon: Heart },
+    { id: 'Nikkah', title: 'Nikkah Ceremony', icon: Gem },
     { id: 'Mehndi', title: 'Mehndi & Mayun', icon: Sparkles },
-    { id: 'Baraat', title: 'Royal Baraat & Nikkah', icon: Heart },
     { id: 'Walima', title: 'Walima & Reception', icon: Gem },
     { id: 'Portraits', title: 'Fine-Art Portraits', icon: Camera },
   ];
@@ -72,37 +74,36 @@ export default function WeddingSection({ onSelectPhoto, onOpenBooking }) {
 
         {/* Wedding Photography Showcase Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredItems.map((item) => (
+          {filteredItems.map((item, index) => (
             <div
               key={item.id}
               onClick={() => onSelectPhoto(item)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectPhoto(item);
+                }
+              }}
               className="group bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-amber-400 transition-all duration-500 hover:-translate-y-2 shadow-md hover:shadow-2xl hover:shadow-amber-500/10 cursor-pointer flex flex-col justify-between"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
-                />
-
-                {/* Subcategory Badge */}
-                <div className="absolute top-4 left-4">
+              <CardImageCarousel
+                images={item.images || [item.image]}
+                title={item.title}
+                aspect="aspect-[4/3]"
+                staggerIndex={index}
+                onCardClick={() => onSelectPhoto(item)}
+                badge={
                   <span className="px-3.5 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-white/90 backdrop-blur-md text-slate-900 border border-slate-200 shadow-md flex items-center gap-1.5">
                     <Sparkles className="w-3 h-3 text-amber-600" />
                     {item.subCategory}
                   </span>
-                </div>
+                }
+                hoverText="View Wedding Story"
+              />
 
-                {/* Hover Action */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="px-4 py-2 rounded-full bg-amber-500 text-white font-bold shadow-xl flex items-center gap-2 text-xs">
-                    <Eye className="w-4 h-4" />
-                    <span>View Wedding Story</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div className="p-5 sm:p-6 space-y-3 flex-1 flex flex-col justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">
@@ -113,7 +114,7 @@ export default function WeddingSection({ onSelectPhoto, onOpenBooking }) {
                     </span>
                   </div>
 
-                  <h3 className="font-royal text-xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors">
+                  <h3 className="font-royal text-lg sm:text-xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors">
                     {item.title}
                   </h3>
 
@@ -122,15 +123,24 @@ export default function WeddingSection({ onSelectPhoto, onOpenBooking }) {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                  <div className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-amber-600" />
-                    <span className="truncate max-w-[170px] font-medium">{item.location}</span>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-1.5 text-slate-500">
+                    <MapPin className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                    <span className="truncate max-w-[130px] sm:max-w-[170px] font-medium">{item.location}</span>
                   </div>
 
-                  <div className="text-[11px] font-mono text-slate-500">
-                    {item.camera}
-                  </div>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelectPhoto(item);
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 hover:bg-amber-500 text-amber-900 hover:text-white border border-amber-300/60 text-[11px] font-bold shadow-sm transition-all duration-300"
+                    aria-label={`View ${item.title} photos`}
+                  >
+                    <Eye className="w-3.5 h-3.5 text-amber-600 group-hover:text-white" />
+                    <span>View Story</span>
+                  </button>
                 </div>
               </div>
 
