@@ -92,9 +92,13 @@ export default function LightboxModal({ item, onClose, onPrev, onNext }) {
           />
           
           {/* Subtle Watermark Branding */}
-          <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 pointer-events-none opacity-70 flex items-center gap-2 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-lg border border-amber-500/20 text-xs">
-            <Camera className="w-3.5 h-3.5 text-amber-400" />
-            <span className="font-royal text-amber-200 tracking-wider">AHSAN VISUALS</span>
+          <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 pointer-events-none opacity-85 flex items-center gap-2 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-lg border border-amber-500/30 text-xs shadow-md">
+            <img 
+              src="/assets/images/logo.jpeg" 
+              alt="Logo" 
+              className="w-4 h-4 rounded-full object-cover border border-amber-400"
+            />
+            <span className="font-royal text-amber-200 tracking-wider text-[11px] font-bold">AHSAN PHOTOGRAPHY</span>
           </div>
 
           {/* Mobile Prev / Next floating mini buttons over image on mobile */}

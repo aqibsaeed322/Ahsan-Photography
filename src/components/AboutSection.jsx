@@ -49,8 +49,17 @@ export default function AboutSection({ onOpenBooking }) {
                 </div>
               </div>
 
+              {/* Studio Logo Stamp */}
+              <div className="absolute -top-4 -left-3 sm:-left-4 z-20 w-14 h-14 rounded-2xl bg-white p-1 border-2 border-amber-400 shadow-xl shadow-amber-500/20 overflow-hidden flex items-center justify-center">
+                <img 
+                  src="/assets/images/logo.jpeg" 
+                  alt="Ahsan Photography Official Stamp" 
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
+
               {/* Verified Artist Pill */}
-              <div className="absolute -top-4 right-4 px-4 py-1.5 rounded-full bg-slate-950 border border-amber-400 text-amber-300 text-xs font-bold shadow-xl flex items-center gap-1.5">
+              <div className="absolute -top-4 right-4 px-4 py-1.5 rounded-full bg-slate-950 border border-amber-400 text-amber-300 text-xs font-bold shadow-xl flex items-center gap-1.5 z-20">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 <span>Verified Master Artist</span>
               </div>

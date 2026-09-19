@@ -83,7 +83,15 @@ I would like to check availability and book coverage:
         </button>
 
         {/* Modal Header */}
-        <div className="text-center space-y-2 mb-6">
+        <div className="text-center space-y-2.5 mb-6">
+          <div className="w-16 h-16 mx-auto rounded-2xl bg-white p-1 border-2 border-amber-400/60 shadow-lg shadow-amber-500/15 overflow-hidden flex items-center justify-center">
+            <img 
+              src="/assets/images/logo.jpeg" 
+              alt="Ahsan Photography Logo" 
+              className="w-full h-full object-cover rounded-xl"
+            />
+          </div>
+
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100/80 text-amber-900 border border-amber-300">
             <Sparkles className="w-3.5 h-3.5 text-amber-700" />
             <span>VIP Event Reservation</span>

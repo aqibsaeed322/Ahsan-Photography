@@ -11,6 +11,7 @@ export const photographerInfo = {
     "Trained under international master cinematographers, Ahsan approaches every event not merely with a camera, but with a deep reverence for Pakistani cultural heritage, authentic emotional nuance, and timeless visual storytelling."
   ],
   portraitImage: "/assets/images/photographer.jpg",
+  logoImage: "/assets/images/logo.jpeg",
   experienceYears: 11,
   stats: [
     { label: "Luxury Weddings", value: "450+", subtitle: "Royal Ceremonies" },

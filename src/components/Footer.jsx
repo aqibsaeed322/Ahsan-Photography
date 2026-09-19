@@ -20,9 +20,13 @@ export default function Footer({ onOpenBooking }) {
           {/* Brand & Introduction */}
           <div className="lg:col-span-4 space-y-4">
             
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
-                <Camera className="w-5 h-5" />
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-xl bg-white p-0.5 border border-amber-500/40 shadow-lg shadow-amber-500/10 flex items-center justify-center overflow-hidden">
+                <img 
+                  src="/assets/images/logo.jpeg" 
+                  alt="Ahsan Photography Logo" 
+                  className="w-full h-full object-cover rounded-[10px]"
+                />
               </div>
               <div>
                 <span className="font-royal text-lg font-bold tracking-wider text-slate-100 block">

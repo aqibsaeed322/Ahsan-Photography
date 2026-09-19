@@ -39,20 +39,23 @@ export default function Navbar({ isPlayingAudio, toggleAudio }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Brand Logo with Gold Emblem (Without PAK badge) */}
-          <a href="#home" className="flex items-center gap-3.5 group focus:outline-none">
-            <div className="relative w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 via-amber-600 to-amber-800 p-[1px] shadow-md shadow-amber-500/15 group-hover:shadow-amber-500/35 transition-all duration-300">
-              <div className="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <Camera className="w-5 h-5 text-amber-400 group-hover:scale-110 transition-transform duration-300" />
+          {/* Brand Logo with Gold Emblem */}
+          <a href="#home" className="flex items-center gap-3 group focus:outline-none">
+            <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-amber-400 via-amber-600 to-amber-800 p-[1.5px] shadow-md shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-all duration-300">
+              <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center overflow-hidden p-0.5">
+                <img 
+                  src="/assets/images/logo.jpeg" 
+                  alt="Ahsan Photography Logo" 
+                  className="w-full h-full object-cover rounded-[9px] group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
             
             <div className="flex flex-col">
-              <span className="font-royal text-lg sm:text-xl font-bold tracking-wider text-slate-950 group-hover:text-amber-700 transition-colors">
+              <span className="font-royal text-lg sm:text-xl font-bold tracking-wider text-slate-950 group-hover:text-amber-700 transition-colors leading-tight">
                 AHSAN
               </span>
-              <span className="text-[11px] uppercase tracking-wider text-amber-700 font-semibold">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-amber-700 font-bold">
                 Luxury Event Photography
               </span>
             </div>
