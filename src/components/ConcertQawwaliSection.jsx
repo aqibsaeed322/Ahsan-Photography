@@ -1,0 +1,146 @@
+import React, { useState } from 'react';
+import { galleryItems } from '../data/galleryData';
+import { Sparkles, Music, Mic2, Flame, MapPin, Eye, Camera } from 'lucide-react';
+
+export default function ConcertQawwaliSection({ onSelectPhoto }) {
+  const [activeTab, setActiveTab] = useState('all');
+
+  const spiritualItems = galleryItems.filter(item => item.category === 'spiritual_concert');
+
+  const filteredItems = activeTab === 'all' 
+    ? spiritualItems 
+    : spiritualItems.filter(item => item.subCategory.toLowerCase() === activeTab.toLowerCase());
+
+  const filterTabs = [
+    { id: 'all', label: 'All Spiritual & Live Stages' },
+    { id: 'Qawwali', label: 'Sufi Qawwali Mehfils' },
+    { id: 'Naat', label: 'Mehfil-e-Naat Gatherings' },
+    { id: 'Concerts', label: 'Live Arena Concerts' },
+  ];
+
+  return (
+    <section id="spiritual-concerts" className="py-24 relative bg-[#FAF9F6] overflow-hidden border-t border-slate-200/80">
+      
+      {/* Decorative Jali Backdrop */}
+      <div className="absolute inset-0 jali-pattern opacity-30 pointer-events-none"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100/80 border border-amber-300 text-amber-900 text-xs font-bold uppercase tracking-wider shadow-sm">
+            <Mic2 className="w-3.5 h-3.5 text-amber-700" />
+            <span>Spiritual & Stage Mastery</span>
+          </div>
+
+          <div className="text-amber-800 text-xs sm:text-sm font-bold uppercase tracking-widest">
+            Devotional Qawwali, Sacred Naat & Live Concert Stage
+          </div>
+
+          <h2 className="font-royal text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-wide">
+            Concert, Naat & <span className="gold-gradient-text">Qawwali Photography</span>
+          </h2>
+
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Capturing the transcendental energy of Pakistani Sufi Mehfils, the spiritual reverence of Mehfil-e-Naat recitations, and the electrifying roar of live concert arenas.
+          </p>
+
+          {/* Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-6">
+            {filterTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
+                  activeTab === tab.id
+                    ? 'bg-slate-900 text-white shadow-md shadow-slate-900/20 scale-105 border border-amber-500/40'
+                    : 'bg-white text-slate-700 hover:text-amber-800 hover:border-amber-300 border border-slate-200 shadow-sm'
+                }`}
+              >
+                <span>{tab.label}</span>
+              </button>
+            ))}
+          </div>
+
+        </div>
+
+        {/* Featured Showcase Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredItems.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => onSelectPhoto(item)}
+              className="group bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-amber-400 transition-all duration-500 hover:-translate-y-2 shadow-md hover:shadow-2xl hover:shadow-amber-500/10 cursor-pointer flex flex-col justify-between"
+            >
+              {/* Photo Box */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+
+                {/* Subcategory Tag */}
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-white/90 backdrop-blur-md text-slate-900 border border-slate-200 flex items-center gap-1.5 shadow-md">
+                    {item.subCategory === 'Qawwali' && <Flame className="w-3 h-3 text-amber-600" />}
+                    {item.subCategory === 'Naat' && <Sparkles className="w-3 h-3 text-emerald-600" />}
+                    {item.subCategory === 'Concerts' && <Music className="w-3 h-3 text-indigo-600" />}
+                    {item.subCategory}
+                  </span>
+                </div>
+
+                {/* Hover Quick Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="px-4 py-2 rounded-full bg-amber-500 text-white font-bold shadow-xl transform scale-90 group-hover:scale-100 transition-transform duration-300 flex items-center gap-2 text-xs">
+                    <Eye className="w-4 h-4" />
+                    <span>View High-Res Photo</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Photo Info Content */}
+              <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">
+                      {item.subCategory}
+                    </span>
+                    <span className="text-[11px] font-mono text-slate-500">
+                      {item.date}
+                    </span>
+                  </div>
+
+                  <h3 className="font-royal text-xl font-bold text-slate-900 group-hover:text-amber-800 transition-colors">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-slate-600 text-xs sm:text-sm line-clamp-2 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-amber-600" />
+                    <span className="truncate max-w-[170px] font-medium">{item.location}</span>
+                  </div>
+
+                  <div className="flex items-center gap-1 text-slate-500 font-mono text-[11px]">
+                    <Camera className="w-3.5 h-3.5 text-amber-600" />
+                    <span>{item.camera}</span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+    </section>
+  );
+}
