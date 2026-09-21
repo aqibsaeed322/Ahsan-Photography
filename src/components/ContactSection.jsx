@@ -10,7 +10,8 @@ import {
   Send, 
   ChevronDown, 
   ShieldCheck,
-  Share2
+  Share2,
+  Instagram
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -146,6 +147,31 @@ New inquiry from website:
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">
                     Proposals & Media Inquiries
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            {/* Official Instagram */}
+            <a
+              href={photographerInfo.socialLinks?.find(s => s.name.toLowerCase() === 'instagram')?.url || 'https://www.instagram.com/ahsantsp?stkn=N2swZHE2OTQ3b3dq'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-white p-6 rounded-3xl border border-slate-200 hover:border-pink-400 transition-all duration-300 shadow-md group hover:scale-[1.02]"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-100 via-rose-100 to-purple-100 border border-pink-300 flex items-center justify-center text-pink-600 group-hover:scale-110 transition-transform">
+                  <Instagram className="w-7 h-7" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-wider text-pink-600">
+                    Official Instagram Feed
+                  </div>
+                  <div className="font-royal text-base sm:text-lg font-bold text-slate-950 group-hover:text-pink-600 transition-colors">
+                    @ahsantsp
+                  </div>
+                  <div className="text-xs text-slate-500 mt-0.5">
+                    Daily Stories, Reels & Recent Shoots
                   </div>
                 </div>
               </div>

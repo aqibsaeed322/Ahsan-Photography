@@ -1,11 +1,13 @@
 import React from 'react';
 import { photographerInfo } from '../data/photographerInfo';
-import { Camera, Phone, Mail, MessageCircle, MapPin, Heart, ArrowUp } from 'lucide-react';
+import { Camera, Phone, Mail, MessageCircle, MapPin, Heart, ArrowUp, Instagram } from 'lucide-react';
 
 export default function Footer({ onOpenBooking }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const instagramLink = photographerInfo.socialLinks?.find(s => s.name.toLowerCase() === 'instagram')?.url || 'https://www.instagram.com/ahsantsp?stkn=N2swZHE2OTQ3b3dq';
 
   return (
     <footer className="bg-[#05070B] border-t border-amber-500/15 pt-16 pb-12 relative overflow-hidden text-slate-400 text-xs sm:text-sm">
@@ -41,6 +43,24 @@ export default function Footer({ onOpenBooking }) {
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
               Preserving the heritage, emotions, and grandeur of Pakistani weddings, Sufi Qawwali mehfils, and live events with cinematic excellence.
             </p>
+
+            {/* Instagram Follow Badge */}
+            <div className="pt-1">
+              <a
+                href={instagramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-amber-500/10 border border-pink-500/30 hover:border-pink-400 text-slate-200 hover:text-white transition-all duration-300 group shadow-sm hover:shadow-pink-500/20"
+              >
+                <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-xs shadow-sm group-hover:scale-110 transition-transform">
+                  <Instagram className="w-3.5 h-3.5" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-pink-400">Follow on Instagram</span>
+                  <span className="text-xs font-semibold text-slate-200 group-hover:text-amber-300">@ahsantsp</span>
+                </div>
+              </a>
+            </div>
 
             <div className="pt-2">
               <div className="text-[11px] uppercase tracking-wider text-amber-400/90 font-bold mb-1">
@@ -90,10 +110,23 @@ export default function Footer({ onOpenBooking }) {
           {/* Direct Contact Details */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-royal text-sm font-bold text-slate-200 tracking-wider uppercase text-amber-400">
-              Direct Contact
+              Direct Contact & Social
             </h4>
             
             <div className="space-y-2.5 text-xs text-slate-300">
+              <div className="flex items-center gap-2">
+                <Instagram className="w-3.5 h-3.5 text-pink-400 shrink-0" />
+                <a 
+                  href={instagramLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-pink-300 transition-colors flex items-center gap-1 font-medium"
+                >
+                  <span>Instagram:</span>
+                  <span className="text-pink-400 hover:underline">@ahsantsp</span>
+                </a>
+              </div>
+
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <a href={`tel:${photographerInfo.contact.phone}`} className="hover:text-amber-300">

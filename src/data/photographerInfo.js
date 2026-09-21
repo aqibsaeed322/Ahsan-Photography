@@ -50,7 +50,7 @@ export const photographerInfo = {
     { year: "2022", title: "Master of Ambient Light & Stage Photography", organization: "Pak Photojournalism Summit" }
   ],
   socialLinks: [
-    { name: "Instagram", url: "https://instagram.com", handle: "@ahsan.photography", followers: "148K" },
+    { name: "Instagram", url: "https://www.instagram.com/ahsantsp?stkn=N2swZHE2OTQ3b3dq", handle: "@ahsantsp", followers: "148K" },
     { name: "Facebook", url: "https://facebook.com", handle: "Ahsan Photography", followers: "85K" },
     { name: "YouTube", url: "https://youtube.com", handle: "Ahsan Films", followers: "42K" },
     { name: "TikTok", url: "https://tiktok.com", handle: "@ahsan_shots", followers: "95K" },
