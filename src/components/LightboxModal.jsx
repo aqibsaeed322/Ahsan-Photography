@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, MapPin, Camera, Sparkles, MessageCircle, Calendar, ShieldCheck } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, MapPin, Camera, Sparkles, MessageCircle, Calendar, ShieldCheck, Play, Video } from 'lucide-react';
 import { photographerInfo } from '../data/photographerInfo';
 
 export default function LightboxModal({ item, onClose, onPrev, onNext }) {
@@ -82,23 +82,40 @@ export default function LightboxModal({ item, onClose, onPrev, onNext }) {
         onClick={(e) => e.stopPropagation()}
       >
         
-        {/* Main Image View */}
+        {/* Main Media View (Video or Image) */}
         <div className="flex-1 bg-black/90 relative flex items-center justify-center overflow-hidden min-h-[260px] sm:min-h-[380px] lg:min-h-[540px]">
-          <img
-            key={currentImageSrc}
-            src={currentImageSrc}
-            alt={item.title}
-            className="w-full h-full max-h-[48vh] sm:max-h-[65vh] lg:max-h-[75vh] object-contain select-none transition-opacity duration-300"
-          />
+          {item.isVideo && item.videoUrl ? (
+            <div className="w-full h-full max-h-[50vh] sm:max-h-[68vh] lg:max-h-[78vh] flex items-center justify-center p-2 sm:p-4">
+              <video
+                key={item.videoUrl}
+                src={item.videoUrl}
+                poster={item.image}
+                controls
+                autoPlay
+                playsInline
+                loop
+                className="max-w-full max-h-full rounded-2xl shadow-2xl object-contain"
+              />
+            </div>
+          ) : (
+            <img
+              key={currentImageSrc}
+              src={currentImageSrc}
+              alt={item.title}
+              className="w-full h-full max-h-[48vh] sm:max-h-[65vh] lg:max-h-[75vh] object-contain select-none transition-opacity duration-300"
+            />
+          )}
           
           {/* Subtle Watermark Branding */}
-          <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 pointer-events-none opacity-85 flex items-center gap-2 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-lg border border-amber-500/30 text-xs shadow-md">
+          <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 pointer-events-none opacity-90 flex items-center gap-2 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-amber-500/40 text-xs shadow-xl z-20">
             <img 
               src="/assets/images/logo.jpeg" 
               alt="Logo" 
               className="w-4 h-4 rounded-full object-cover border border-amber-400"
             />
-            <span className="font-royal text-amber-200 tracking-wider text-[11px] font-bold">AHSAN PHOTOGRAPHY</span>
+            <span className="font-royal text-amber-200 tracking-wider text-[11px] font-bold">
+              {item.credit || (item.clickedByAhsan ? 'CLICKED BY AHSAN' : 'AHSAN PHOTOGRAPHY')}
+            </span>
           </div>
 
           {/* Mobile Prev / Next floating mini buttons over image on mobile */}
@@ -164,7 +181,7 @@ export default function LightboxModal({ item, onClose, onPrev, onNext }) {
             <div className="flex items-center justify-between">
               <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-amber-500/10 text-amber-300 border border-amber-500/30 flex items-center gap-1.5">
                 <Sparkles className="w-3 h-3 text-amber-400" />
-                {item.subCategory || item.category}
+                {item.tagLabel || item.subCategory || item.category}
               </span>
               <span className="text-xs text-amber-400/90 font-medium">
                 {item.date}
