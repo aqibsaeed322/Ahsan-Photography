@@ -67,9 +67,8 @@ export const galleryItems = [
     title: "Heritage Couple Portrait at Shahi Qila",
     category: "wedding",
     subCategory: "Portraits",
-    image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
+    image: "/assets/images/baraat (2).jpeg",
     images: [
-      "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
       "/assets/images/baraat (2).jpeg",
       "/assets/images/walima (2).jpeg",
       "/assets/images/nikkah (2).jpeg"

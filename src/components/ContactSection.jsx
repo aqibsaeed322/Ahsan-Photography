@@ -171,32 +171,10 @@ New inquiry from website:
               </div>
             </div>
 
-            {/* Social Media Channels */}
-            <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
-                <Share2 className="w-4 h-4 text-amber-600" />
-                Official Social Channels
-              </h4>
-
-              <div className="grid grid-cols-2 gap-2 pt-1">
-                {photographerInfo.socialLinks.map((s, idx) => (
-                  <a
-                    key={idx}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400 text-slate-700 hover:text-amber-800 transition-all flex items-center justify-between text-xs"
-                  >
-                    <span className="font-semibold">{s.name}</span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-mono font-bold">
-                      {s.followers}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
+           
 
           </div>
+          
 
           {/* Right: Direct Inquiry Form */}
           <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl relative">
