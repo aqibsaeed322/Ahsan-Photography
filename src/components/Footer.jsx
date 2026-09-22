@@ -110,23 +110,10 @@ export default function Footer({ onOpenBooking }) {
           {/* Direct Contact Details */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-royal text-sm font-bold text-slate-200 tracking-wider uppercase text-amber-400">
-              Direct Contact & Social
+              Direct Contact
             </h4>
             
             <div className="space-y-2.5 text-xs text-slate-300">
-              <div className="flex items-center gap-2">
-                <Instagram className="w-3.5 h-3.5 text-pink-400 shrink-0" />
-                <a 
-                  href={instagramLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-pink-300 transition-colors flex items-center gap-1 font-medium"
-                >
-                  <span>Instagram:</span>
-                  <span className="text-pink-400 hover:underline">@ahsantsp</span>
-                </a>
-              </div>
-
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                 <a href={`tel:${photographerInfo.contact.phone}`} className="hover:text-amber-300">
@@ -145,6 +132,18 @@ export default function Footer({ onOpenBooking }) {
                 <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                 <a href={`mailto:${photographerInfo.contact.email}`} className="hover:text-blue-300 truncate">
                   {photographerInfo.contact.email}
+                </a>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Instagram className="w-3.5 h-3.5 text-pink-400 shrink-0" />
+                <a 
+                  href="https://www.instagram.com/ahsantsp?stkn=N2swZHE2OTQ3b3dq" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-pink-300 transition-colors"
+                >
+                  Instagram: @ahsantsp
                 </a>
               </div>
 
