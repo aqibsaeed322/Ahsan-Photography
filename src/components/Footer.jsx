@@ -1,6 +1,24 @@
 import React from 'react';
 import { photographerInfo } from '../data/photographerInfo';
-import { Camera, Phone, Mail, MessageCircle, MapPin, Heart, ArrowUp, Instagram } from 'lucide-react';
+import { Camera, Phone, Mail, MessageCircle, MapPin, Heart, ArrowUp } from 'lucide-react';
+
+const InstagramIcon = ({ className = "w-4 h-4" }) => (
+  <svg
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    stroke="currentColor"
+    strokeWidth="2"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
 
 export default function Footer({ onOpenBooking }) {
   const scrollToTop = () => {
@@ -53,7 +71,7 @@ export default function Footer({ onOpenBooking }) {
                 className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-amber-500/10 border border-pink-500/30 hover:border-pink-400 text-slate-200 hover:text-white transition-all duration-300 group shadow-sm hover:shadow-pink-500/20"
               >
                 <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-xs shadow-sm group-hover:scale-110 transition-transform">
-                  <Instagram className="w-3.5 h-3.5" />
+                  <InstagramIcon className="w-3.5 h-3.5" />
                 </div>
                 <div className="flex flex-col text-left">
                   <span className="text-[10px] uppercase font-bold tracking-wider text-pink-400">Follow on Instagram</span>
@@ -136,7 +154,7 @@ export default function Footer({ onOpenBooking }) {
               </div>
 
               <div className="flex items-center gap-2">
-                <Instagram className="w-3.5 h-3.5 text-pink-400 shrink-0" />
+                <InstagramIcon className="w-3.5 h-3.5 text-pink-400 shrink-0" />
                 <a 
                   href="https://www.instagram.com/ahsantsp?stkn=N2swZHE2OTQ3b3dq" 
                   target="_blank" 
