@@ -25,7 +25,8 @@ export default function Footer({ onOpenBooking }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const instagramLink = photographerInfo.socialLinks?.find(s => s.name.toLowerCase() === 'instagram')?.url || 'https://www.instagram.com/ahsantsp?stkn=N2swZHE2OTQ3b3dq';
+  const instagramLink = photographerInfo.socialLinks?.find(s => s.name.toLowerCase() === 'instagram')?.url || 'https://www.instagram.com/ahsanphotographyytsp?rpxt=ZjhvOWFpa2ZmbXdh';
+  const instagramHandle = photographerInfo.socialLinks?.find(s => s.name.toLowerCase() === 'instagram')?.handle || '@ahsanphotographyytsp';
 
   return (
     <footer className="bg-[#05070B] border-t border-amber-500/15 pt-16 pb-12 relative overflow-hidden text-slate-400 text-xs sm:text-sm">
@@ -75,7 +76,7 @@ export default function Footer({ onOpenBooking }) {
                 </div>
                 <div className="flex flex-col text-left">
                   <span className="text-[10px] uppercase font-bold tracking-wider text-pink-400">Follow on Instagram</span>
-                  <span className="text-xs font-semibold text-slate-200 group-hover:text-amber-300">@ahsantsp</span>
+                  <span className="text-xs font-semibold text-slate-200 group-hover:text-amber-300">{instagramHandle}</span>
                 </div>
               </a>
             </div>
@@ -156,12 +157,12 @@ export default function Footer({ onOpenBooking }) {
               <div className="flex items-center gap-2">
                 <InstagramIcon className="w-3.5 h-3.5 text-pink-400 shrink-0" />
                 <a 
-                  href="https://www.instagram.com/ahsantsp?stkn=N2swZHE2OTQ3b3dq" 
+                  href={instagramLink} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="hover:text-pink-300 transition-colors"
                 >
-                  Instagram: @ahsantsp
+                  Instagram: {instagramHandle}
                 </a>
               </div>
 

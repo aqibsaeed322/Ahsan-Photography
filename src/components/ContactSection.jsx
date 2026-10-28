@@ -171,7 +171,7 @@ New inquiry from website:
 
             {/* Official Instagram */}
             <a
-              href={photographerInfo.socialLinks?.find(s => s.name.toLowerCase() === 'instagram')?.url || 'https://www.instagram.com/ahsantsp?stkn=N2swZHE2OTQ3b3dq'}
+              href={photographerInfo.socialLinks?.find(s => s.name.toLowerCase() === 'instagram')?.url || 'https://www.instagram.com/ahsanphotographyytsp?rpxt=ZjhvOWFpa2ZmbXdh'}
               target="_blank"
               rel="noopener noreferrer"
               className="block bg-white p-6 rounded-3xl border border-slate-200 hover:border-pink-400 transition-all duration-300 shadow-md group hover:scale-[1.02]"
@@ -185,7 +185,7 @@ New inquiry from website:
                     Official Instagram Feed
                   </div>
                   <div className="font-royal text-base sm:text-lg font-bold text-slate-950 group-hover:text-pink-600 transition-colors">
-                    @ahsantsp
+                    {photographerInfo.socialLinks?.find(s => s.name.toLowerCase() === 'instagram')?.handle || '@ahsanphotographyytsp'}
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">
                     Daily Stories, Reels & Recent Shoots
